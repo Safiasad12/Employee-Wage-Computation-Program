@@ -1,1 +1,1 @@
-console.log("Welcom to Employee Computation Program...");
+console.log("Welcom to Employee Wage Computation Program...");
