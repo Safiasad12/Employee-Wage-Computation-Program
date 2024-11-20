@@ -6,7 +6,9 @@ const halfDayHours = 4;
 const totalWorkigDaysForAMonth = 20;
 
 let dailyWage;
-let totalHours=0;
+let totalHours = 0;
+let monthlyHoursCompleted=false;
+let maxWorkHrs = 50;
 
 for (let day = 1; day <= totalWorkigDaysForAMonth; day++) {
 
@@ -26,27 +28,32 @@ for (let day = 1; day <= totalWorkigDaysForAMonth; day++) {
                     console.log("Part-Time Employee");
                     dailyWage = wagePerHour * halfDayHours;
                     console.log("Employee's Daily Wage: " + dailyWage);
-                    totalHours+=halfDayHours;
+                    totalHours += halfDayHours;
                     break;
                 case 1:
                     console.log("Full-Time Employee");
                     dailyWage = wagePerHour * fullDayHours;
                     console.log("Employee's Daily Wage: " + dailyWage);
-                    totalHours+=fullDayHours;
+                    totalHours += fullDayHours;
                     break;
             }
-            default : 
-                if(totalHours>=100){
-                    break;
-                }
+        default:
+            if (totalHours >= maxWorkHrs) {
+                monthlyHoursCompleted=true;
+            }
     }
 
     console.log("-----------------------------------");
 
+    if(monthlyHoursCompleted){
+        console.log("cannot work as you excided monthly maximum hours");
+        break;
+    }
+
+
 }
 
 // console.log(totalHours);
-
 
 
 
