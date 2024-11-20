@@ -35,12 +35,13 @@ for (let day = 1; day <= totalWorkingDaysForAMonth; day++) {
 
     console.log("Total Hours So Far: " + totalHours);
 
+    console.log("-----------------------------------");
+
     if (totalHours >= maxWorkHrs) {
         console.log("Cannot work as you exceeded monthly maximum hours.");
         break;
     }
 
-    console.log("-----------------------------------");
 }
 
 console.log(`Total Working Hours: ${Math.min(totalHours, maxWorkHrs)}`);
