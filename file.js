@@ -1,70 +1,47 @@
-console.log("Welcom to Employee Wage Computation Program...");
+console.log("Welcome to Employee Wage Computation Program...");
 
 const wagePerHour = 20;  // Wage per hour in currency
 const fullDayHours = 8;  // Full day work hours
-const halfDayHours = 4;
-const totalWorkigDaysForAMonth = 20;
+const halfDayHours = 4;  // Half day work hours
+const totalWorkingDaysForAMonth = 20; // Fixed typo
+const maxWorkHrs = 50; // Maximum allowable hours in a month
 
-let dailyWage;
 let totalHours = 0;
-let monthlyHoursCompleted=false;
-let maxWorkHrs = 50;
 
-for (let day = 1; day <= totalWorkigDaysForAMonth; day++) {
-
+for (let day = 1; day <= totalWorkingDaysForAMonth; day++) {
     console.log(`Day ${day}`);
 
-    let attendance = Math.floor(Math.random() * 2); // Generates 0 or 1
+    let attendance = Math.floor(Math.random() * 2); // Generates 0 or 1 (Absent or Present)
 
-    switch (attendance) {
-        case 0:
-            console.log("Employee is Absent");
-            break;
-        case 1:
-            console.log("Employee is Present");
-            let employeeType = Math.floor(Math.random() * 2);
-            switch (employeeType) {
-                case 0:
-                    console.log("Part-Time Employee");
-                    dailyWage = wagePerHour * halfDayHours;
-                    console.log("Employee's Daily Wage: " + dailyWage);
-                    totalHours += halfDayHours;
-                    break;
-                case 1:
-                    console.log("Full-Time Employee");
-                    dailyWage = wagePerHour * fullDayHours;
-                    console.log("Employee's Daily Wage: " + dailyWage);
-                    totalHours += fullDayHours;
-                    break;
-            }
-        default:
-            if (totalHours >= maxWorkHrs) {
-                monthlyHoursCompleted=true;
-            }
+    if (attendance === 0) {
+        console.log("Employee is Absent");
+    } else {
+        console.log("Employee is Present");
+        let employeeType = Math.floor(Math.random() * 2); // Determines Part-Time or Full-Time
+        let dailyWage = 0;
+
+        if (employeeType === 0) {
+            console.log("Part-Time Employee");
+            dailyWage = wagePerHour * halfDayHours;
+            totalHours += halfDayHours;
+        } else {
+            console.log("Full-Time Employee");
+            dailyWage = wagePerHour * fullDayHours;
+            totalHours += fullDayHours;
+        }
+
+        console.log("Employee's Daily Wage: " + dailyWage);
     }
 
-    console.log("-----------------------------------");
+    console.log("Total Hours So Far: " + totalHours);
 
-    if(monthlyHoursCompleted){
-        console.log("cannot work as you excided monthly maximum hours");
+    if (totalHours >= maxWorkHrs) {
+        console.log("Cannot work as you exceeded monthly maximum hours.");
         break;
     }
 
-
+    console.log("-----------------------------------");
 }
 
-// console.log(totalHours);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(`Total Working Hours: ${Math.min(totalHours, maxWorkHrs)}`);
+console.log(`Total Monthly Wage: ${wagePerHour * Math.min(totalHours, maxWorkHrs)}`);
