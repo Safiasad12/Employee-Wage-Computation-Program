@@ -5,13 +5,14 @@ const fullDayHours = 8;  // Full day work hours
 const halfDayHours = 4;
 const totalWorkigDaysForAMonth = 20;
 
+let dailyWage;
+let totalHours=0;
+
 for (let day = 1; day <= totalWorkigDaysForAMonth; day++) {
 
     console.log(`Day ${day}`);
 
     let attendance = Math.floor(Math.random() * 2); // Generates 0 or 1
-
-    let dailyWage;
 
     switch (attendance) {
         case 0:
@@ -25,19 +26,26 @@ for (let day = 1; day <= totalWorkigDaysForAMonth; day++) {
                     console.log("Part-Time Employee");
                     dailyWage = wagePerHour * halfDayHours;
                     console.log("Employee's Daily Wage: " + dailyWage);
+                    totalHours+=halfDayHours;
                     break;
                 case 1:
                     console.log("Full-Time Employee");
                     dailyWage = wagePerHour * fullDayHours;
                     console.log("Employee's Daily Wage: " + dailyWage);
+                    totalHours+=fullDayHours;
                     break;
             }
+            default : 
+                if(totalHours>=100){
+                    break;
+                }
     }
 
     console.log("-----------------------------------");
 
 }
 
+// console.log(totalHours);
 
 
 
